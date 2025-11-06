@@ -3,54 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Single Page Quiz</title>
+  <title>Quiz Project</title>
 
-  <!-- Tailwind CDN -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Custom Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="bg-gray-50 min-h-screen flex justify-center p-6">
+<body class="bg-gray-50 flex items-center justify-center min-h-screen">
 
-  <main class="w-full max-w-3xl">
-    <!-- Section: Intro -->
-    <section id="intro" class="bg-white p-6 rounded-2xl shadow mb-6">
-      <h1 class="text-3xl font-bold mb-2">Welcome to the Quiz!</h1>
-      <p class="text-gray-600 mb-4">
-        This short quiz will test your general knowledge. Click the button below to get started.
-      </p>
-      <button id="startBtn" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+  <main class="w-full max-w-lg bg-white rounded-2xl shadow-lg p-8 text-center space-y-6">
+    <!-- Intro Section -->
+    <section id="intro">
+      <h1 class="text-3xl font-bold mb-4">Welcome to the Quiz!</h1>
+      <p class="text-gray-600 mb-6">Test your knowledge with a few fun questions.</p>
+      <button id="startBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg transition">
         Start Quiz
       </button>
     </section>
 
-    <!-- Section: Quiz (hidden initially) -->
-    <section id="quiz" class="hidden bg-white p-6 rounded-2xl shadow mb-6">
-      <div id="questionContainer">
-        <!-- Questions will be rendered here dynamically -->
-      </div>
-
-      <div class="mt-6 flex justify-between">
-        <button id="prevBtn" class="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300">Previous</button>
-        <div>
-          <button id="nextBtn" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 mr-2">
-            Next
-          </button>
-          <button id="submitBtn" class="hidden px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">
-            Submit
-          </button>
-        </div>
+    <!-- Quiz Section -->
+    <section id="quiz" class="hidden space-y-6">
+      <div id="questionContainer" class="text-left"></div>
+      <div class="flex justify-between">
+        <button id="prevBtn" class="bg-gray-300 text-gray-700 py-2 px-4 rounded-lg" disabled>Previous</button>
+        <button id="nextBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg">Next</button>
+        <button id="submitBtn" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg hidden">Submit</button>
       </div>
     </section>
 
-    <!-- Section: Result (hidden initially) -->
-    <section id="result" class="hidden bg-white p-6 rounded-2xl shadow">
-      <h2 class="text-2xl font-semibold mb-2">Your Result</h2>
-      <p id="scoreText" class="mb-4 text-gray-700">You scored X out of Y.</p>
-      <button id="restartBtn" class="px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600">
-        Restart Quiz
-      </button>
+    <!-- Results Section -->
+    <section id="result" class="hidden">
+      <h2 class="text-2xl font-bold mb-4">Your Results</h2>
+      <p id="scoreText" class="text-lg mb-6"></p>
+      <button id="restartBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg">Restart</button>
     </section>
   </main>
 
