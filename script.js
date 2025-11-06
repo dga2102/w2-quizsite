@@ -1,1 +1,4 @@
-console.log("Quiz Project setup complete!");
+// script.js
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("WOrks");
+});
