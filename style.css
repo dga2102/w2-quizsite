@@ -1,10 +1,4 @@
 /* styles.css */
-/* ---------------------------------------------------------
-   Custom tweaks for the Quiz project
-   (Used alongside Tailwind)
---------------------------------------------------------- */
-
-/* Hide helper */
 .hidden-by-css {
   display: none !important;
 }

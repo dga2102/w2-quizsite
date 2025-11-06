@@ -3,6 +3,38 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("Quiz skeleton loaded successfully");
 });
 
+// TEMP: sample questions to prevent script crash
+const questions = [
+  {
+    id: 1,
+    text: "What’s your favorite game type?",
+    type: "radio",
+    options: [
+      { id: "a", text: "Action", correct: true },
+      { id: "b", text: "Puzzle" },
+      { id: "c", text: "Simulation" },
+      { id: "d", text: "Adventure" }
+    ],
+    meta: { inUse: true }
+  }
+];
+
+// TEMP: sample questions to prevent script crash
+const questions = [
+  {
+    id: 1,
+    text: "What’s your favorite game type?",
+    type: "radio",
+    options: [
+      { id: "a", text: "Action", correct: true },
+      { id: "b", text: "Puzzle" },
+      { id: "c", text: "Simulation" },
+      { id: "d", text: "Adventure" }
+    ],
+    meta: { inUse: true }
+  }
+];
+
 const visibleQuestions = questions.filter(q => q.meta?.inUse !== false);
 
 // Track user answers and current question index
@@ -107,3 +139,45 @@ prevBtn.addEventListener("click", () => {
 });
 
 console.log("✅ Quiz rendering logic loaded");
+
+const scoreText = document.getElementById("scoreText");
+const restartBtn = document.getElementById("restartBtn");
+
+// Calculate and show the score
+function calculateScore() {
+  let score = 0;
+
+  visibleQuestions.forEach(q => {
+    const selected = userAnswers[q.id];
+    const correctAnswers = q.options
+      .filter(opt => opt.correct)
+      .map(opt => opt.id);
+
+    // Handle multiple correct answers
+    if (correctAnswers.includes(selected)) {
+      score++;
+    }
+  });
+
+  return score;
+}
+
+// Submit event
+submitBtn.addEventListener("click", () => {
+  const total = visibleQuestions.length;
+  const score = calculateScore();
+
+  scoreText.textContent = `You got ${score} out of ${total} correct! 🎉`;
+  showSection(result);
+});
+
+// Restart quiz
+restartBtn.addEventListener("click", () => {
+  // Clear answers
+  for (const key in userAnswers) delete userAnswers[key];
+  currentIndex = 0;
+
+  // Show intro again
+  showSection(intro);
+});
+
