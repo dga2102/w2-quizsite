@@ -1,27 +1,32 @@
 /* styles.css */
-/* Hide helper — sometimes used if we need to force-hide elements */
+/* ---------------------------------------------------------
+   Custom tweaks for the Quiz project
+   (Used alongside Tailwind)
+--------------------------------------------------------- */
+
+/* Hide helper */
 .hidden-by-css {
   display: none !important;
 }
 
-/* Basic body tweaks — keep typography smooth */
+/* Typography tweaks */
 body {
   font-family: system-ui, sans-serif;
   line-height: 1.6;
 }
 
-/* Label styling for clickable radio/checkbox options */
+/* Label styling for clickable options */
 .option-label {
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 .option-label:hover {
-  background-color: #f9fafb;
+  background-color: #f9fafb; /* Tailwind gray-50 */
   transform: translateY(-1px);
 }
 
-/* For image-based quiz options */
+/* Image-based options */
 .option-img {
   width: 120px;
   height: 80px;
@@ -31,21 +36,21 @@ body {
   transition: all 0.2s ease;
 }
 
-/* Add a highlight when an image option is selected */
+/* Highlight selected image */
 .option-selected {
-  border-color: #4f46e5;
+  border-color: #4f46e5; /* Tailwind indigo-600 */
   transform: scale(1.05);
   box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
 }
 
-/* Visually hide the radio input but keep it accessible for screen readers */
+/* Visually hide radios */
 .invisible-radio {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-/* Minor button glow for feedback */
+/* Button focus glow */
 button:focus {
   outline: none;
   box-shadow: 0 0 0 2px #c7d2fe;
