@@ -1,4 +1,4 @@
 // script.js
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("WOrks");
+  console.log("Quiz skeleton loaded successfully");
 });
