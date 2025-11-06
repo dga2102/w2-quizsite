@@ -1,4 +1,52 @@
 /* styles.css */
-.hidden {
+/* Hide helper — sometimes used if we need to force-hide elements */
+.hidden-by-css {
   display: none !important;
+}
+
+/* Basic body tweaks — keep typography smooth */
+body {
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+/* Label styling for clickable radio/checkbox options */
+.option-label {
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.option-label:hover {
+  background-color: #f9fafb;
+  transform: translateY(-1px);
+}
+
+/* For image-based quiz options */
+.option-img {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+/* Add a highlight when an image option is selected */
+.option-selected {
+  border-color: #4f46e5;
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
+}
+
+/* Visually hide the radio input but keep it accessible for screen readers */
+.invisible-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Minor button glow for feedback */
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #c7d2fe;
 }
