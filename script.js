@@ -18,6 +18,7 @@ const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 const submitBtn = document.getElementById("submitBtn");
 const resultText = document.getElementById("scoreText"); // reuse this element
+const restartBtn = document.getElementById("restartBtn");
 
 // Helper: show only one section at a time
 function showSection(section) {
@@ -32,14 +33,12 @@ function renderQuestion(index) {
   const q = visibleQuestions[index];
   if (!q) return;
 
-  // Question header
   let html = `
     <h3 class="text-lg font-semibold mb-2">Question ${index + 1} of ${visibleQuestions.length}</h3>
     <p class="mb-4">${q.text}</p>
     <div class="grid gap-3 ${q.type === "image" ? "grid-cols-3" : "grid-cols-1"}">
   `;
 
-  // Build options dynamically
   q.options.forEach(opt => {
     const inputName = `q${q.id}`;
     const isChecked = userAnswers[q.id] === opt.id ? "checked" : "";
@@ -65,6 +64,7 @@ function renderQuestion(index) {
   html += "</div>";
   questionContainer.innerHTML = html;
 
+  // Add event listeners
   const radios = questionContainer.querySelectorAll('input[type="radio"]');
   radios.forEach(radio => {
     radio.addEventListener("change", e => {
@@ -107,20 +107,14 @@ prevBtn.addEventListener("click", () => {
   }
 });
 
-console.log("✅ Quiz rendering logic loaded");
-
-// Restart button
-const restartBtn = document.getElementById("restartBtn");
+// Restart quiz
 restartBtn.addEventListener("click", () => {
-  // Clear answers
   for (const key in userAnswers) delete userAnswers[key];
   currentIndex = 0;
-
-  // Show intro again
   showSection(intro);
 });
 
-// Calculate top genre
+// Calculate top genre (with tie-handling)
 function calculateGenreResult() {
   const genreCounts = {};
 
@@ -134,22 +128,23 @@ function calculateGenreResult() {
     }
   });
 
-  // Find the genre with the highest count
-  let topGenre = null;
   let maxCount = 0;
-  for (const [genre, count] of Object.entries(genreCounts)) {
-    if (count > maxCount) {
-      maxCount = count;
-      topGenre = genre;
-    }
+  for (const count of Object.values(genreCounts)) {
+    if (count > maxCount) maxCount = count;
   }
 
-  return topGenre;
+  const topGenres = Object.entries(genreCounts)
+    .filter(([_, count]) => count === maxCount)
+    .map(([genre]) => genre);
+
+  return topGenres.length === 1 ? topGenres[0] : topGenres.join(" and ");
 }
 
 // Submit button
 submitBtn.addEventListener("click", () => {
   const topGenre = calculateGenreResult();
-  resultText.textContent = `Your ideal game genre is: ${topGenre} 🎮`;
+  resultText.textContent = `Your ideal game genre is: ${topGenre} games!`;
   showSection(result);
 });
+
+console.log(" Genre-based quiz logic loaded");
