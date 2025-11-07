@@ -1,22 +1,22 @@
 const questions = [
   {
     id: 1,
-    text: "What kind of game worlds do you enjoy?",
+    text: "Would you class yourself as an extroverted person?",
     type: "radio",
     options: [
-      { id: "a", text: "Expansive, story-driven worlds", genre: "RPG" },
-      { id: "b", text: "Fast-paced, action-packed arenas", genre: "FPS" },
-      { id: "c", text: "Mind-bending puzzles and challenges", genre: "Puzzle" },
+      { id: "a", text: "Yes", genre: "Co-op Campaign" },
+      { id: "b", text: "No", genre: "Single Player Story Mode" },
+      { id: "c", text: "It depends on the day..", genre: "Survival" },
     ]
   },
   {
     id: 2,
-    text: "Which gameplay style excites you the most?",
+    text: "How much time do you want to invest into a new game?",
     type: "radio",
     options: [
-      { id: "a", text: "Strategic planning and leveling up", genre: "RPG" },
-      { id: "b", text: "Quick reflexes and aiming skills", genre: "FPS" },
-      { id: "c", text: "Solving riddles and logic problems", genre: "Puzzle" },
+      { id: "a", text: "The Majority of My Time ", genre: "Survival" },
+      { id: "b", text: "Whenever My Friends Are Online", genre: "Co-op Campaign" },
+      { id: "c", text: "Just on Occasions", genre: "Single Player Story Mode" },
     ]
   },
   {
@@ -24,20 +24,20 @@ const questions = [
     text: "Choose the type of challenge you prefer:",
     type: "radio",
     options: [
-      { id: "a", text: "Character customization and story choices", genre: "RPG" },
-      { id: "b", text: "Competitive matches and leaderboards", genre: "FPS" },
-      { id: "c", text: "Brain teasers and critical thinking", genre: "Puzzle" },
+      { id: "a", text: "Survival and Gathering", genre: "Survival" },
+      { id: "b", text: "Long solo grinding with saveable progress", genre: "Single Player Story Mode" },
+      { id: "c", text: "Team missions with friends", genre: "Co-op Campaign" },
     ]
   },
   // Optional: image-based question example
   {
     id: 4,
-    text: "Pick the environment you like best:",
+    text: "Select the photo of the game you think looks like the most fun:",
     type: "image",
     options: [
-      { id: "a", img: "images/fantasy.jpg", genre: "RPG" },
-      { id: "b", img: "images/shooter.jpg", genre: "FPS" },
-      { id: "c", img: "images/puzzle.jpg", genre: "Puzzle" },
+      { id: "a", img: "https://i.guim.co.uk/img/media/0f5405ee8f4b174822506b1a4c0011e1a0ca9706/0_0_3840_2160/master/3840.jpg?width=445&dpr=1&s=none&crop=none", genre: "Single Player Story Mode" },
+      { id: "b", img: "https://static0.polygonimages.com/wordpress/wp-content/uploads/2025/11/arc-raiders-best-skills-header.jpg?w=1600&h=900&fit=crop", genre: "Survival" },
+      { id: "c", img: "https://images.squarespace-cdn.com/content/v1/5ce942caecdee600012bbbb3/1ab78d0e-6245-4f4f-b18d-d57078bffd34/It+Takes+Two_20210521202630.jpg", genre: "Co-op Campaign" },
     ]
   }
 ];

@@ -169,4 +169,4 @@ submitBtn.addEventListener("click", () => {
   showSection(result);
 });
 
-console.log("✅ Full genre quiz script loaded with hover effects and frosted borders");
+console.log(" Full genre quiz script loaded with hover effects and frosted borders");
