@@ -1,61 +1,43 @@
-// questions.js
 const questions = [
   {
     id: 1,
-    text: "Do you prefer fiction or non fiction movies/series?",
+    text: "What kind of game worlds do you enjoy?",
     type: "radio",
     options: [
-      { id: "a", text: "Fiction", correct: true },
-      { id: "b", text: "Non-fiction" },
-      
-    ],
-    meta: { inUse: true }
+      { id: "a", text: "Expansive, story-driven worlds", genre: "RPG" },
+      { id: "b", text: "Fast-paced, action-packed arenas", genre: "FPS" },
+      { id: "c", text: "Mind-bending puzzles and challenges", genre: "Puzzle" },
+    ]
   },
   {
     id: 2,
-    text: "How do you usually play games?",
+    text: "Which gameplay style excites you the most?",
     type: "radio",
     options: [
-      { id: "a", text: "Solo" },
-      { id: "b", text: "With friends online", correct: true },
-      { id: "c", text: "Local co-op" },
-      { id: "d", text: "I mostly watch others play" }
-    ],
-    meta: { inUse: true }
+      { id: "a", text: "Strategic planning and leveling up", genre: "RPG" },
+      { id: "b", text: "Quick reflexes and aiming skills", genre: "FPS" },
+      { id: "c", text: "Solving riddles and logic problems", genre: "Puzzle" },
+    ]
   },
   {
     id: 3,
-    text: "Pick an image that matches your vibe:",
-    type: "image",
+    text: "Choose the type of challenge you prefer:",
+    type: "radio",
     options: [
-      { id: "a", img: "https://via.placeholder.com/100x100/4f46e5/ffffff?text=Action" },
-      { id: "b", img: "https://via.placeholder.com/100x100/f59e0b/ffffff?text=RPG", correct: true },
-      { id: "c", img: "https://via.placeholder.com/100x100/10b981/ffffff?text=Strategy" }
-    ],
-    meta: { inUse: true }
+      { id: "a", text: "Character customization and story choices", genre: "RPG" },
+      { id: "b", text: "Competitive matches and leaderboards", genre: "FPS" },
+      { id: "c", text: "Brain teasers and critical thinking", genre: "Puzzle" },
+    ]
   },
+  // Optional: image-based question example
   {
     id: 4,
-    text: "What do you value most in a game?",
-    type: "radio",
+    text: "Pick the environment you like best:",
+    type: "image",
     options: [
-      { id: "a", text: "Storytelling" },
-      { id: "b", text: "Competition", correct: true },
-      { id: "c", text: "Creativity and building" },
-      { id: "d", text: "Chill and relaxing vibes" }
-    ],
-    meta: { inUse: true }
-  },
-  {
-    id: 5,
-    text: "Which platform do you prefer?",
-    type: "radio",
-    options: [
-      { id: "a", text: "PC" },
-      { id: "b", text: "Console" },
-      { id: "c", text: "Mobile", correct: true },
-      { id: "d", text: "" }
-    ],
-    meta: { inUse: true }
+      { id: "a", img: "images/fantasy.jpg", genre: "RPG" },
+      { id: "b", img: "images/shooter.jpg", genre: "FPS" },
+      { id: "c", img: "images/puzzle.jpg", genre: "Puzzle" },
+    ]
   }
 ];
