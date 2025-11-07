@@ -1,4 +1,3 @@
-// script.js
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Quiz skeleton loaded successfully");
 });
@@ -18,6 +17,7 @@ const startBtn = document.getElementById("startBtn");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 const submitBtn = document.getElementById("submitBtn");
+const resultText = document.getElementById("scoreText"); // reuse this element
 
 // Helper: show only one section at a time
 function showSection(section) {
@@ -65,7 +65,6 @@ function renderQuestion(index) {
   html += "</div>";
   questionContainer.innerHTML = html;
 
-
   const radios = questionContainer.querySelectorAll('input[type="radio"]');
   radios.forEach(radio => {
     radio.addEventListener("change", e => {
@@ -86,12 +85,14 @@ function renderQuestion(index) {
   submitBtn.classList.toggle("hidden", index !== visibleQuestions.length - 1);
 }
 
+// Start quiz
 startBtn.addEventListener("click", () => {
   currentIndex = 0;
   showSection(quiz);
   renderQuestion(currentIndex);
 });
 
+// Navigation buttons
 nextBtn.addEventListener("click", () => {
   if (currentIndex < visibleQuestions.length - 1) {
     currentIndex++;
@@ -108,38 +109,8 @@ prevBtn.addEventListener("click", () => {
 
 console.log("✅ Quiz rendering logic loaded");
 
-const scoreText = document.getElementById("scoreText");
+// Restart button
 const restartBtn = document.getElementById("restartBtn");
-
-// Calculate and show the score
-function calculateScore() {
-  let score = 0;
-
-  visibleQuestions.forEach(q => {
-    const selected = userAnswers[q.id];
-    const correctAnswers = q.options
-      .filter(opt => opt.correct)
-      .map(opt => opt.id);
-
-    // Handle multiple correct answers
-    if (correctAnswers.includes(selected)) {
-      score++;
-    }
-  });
-
-  return score;
-}
-
-// Submit event
-submitBtn.addEventListener("click", () => {
-  const total = visibleQuestions.length;
-  const score = calculateScore();
-
-  scoreText.textContent = `You got ${score} out of ${total} correct! 🎉`;
-  showSection(result);
-});
-
-// Restart quiz
 restartBtn.addEventListener("click", () => {
   // Clear answers
   for (const key in userAnswers) delete userAnswers[key];
@@ -149,3 +120,36 @@ restartBtn.addEventListener("click", () => {
   showSection(intro);
 });
 
+// Calculate top genre
+function calculateGenreResult() {
+  const genreCounts = {};
+
+  visibleQuestions.forEach(q => {
+    const selectedOptionId = userAnswers[q.id];
+    const selectedOption = q.options.find(opt => opt.id === selectedOptionId);
+    if (selectedOption) {
+      const genre = selectedOption.genre;
+      if (!genreCounts[genre]) genreCounts[genre] = 0;
+      genreCounts[genre]++;
+    }
+  });
+
+  // Find the genre with the highest count
+  let topGenre = null;
+  let maxCount = 0;
+  for (const [genre, count] of Object.entries(genreCounts)) {
+    if (count > maxCount) {
+      maxCount = count;
+      topGenre = genre;
+    }
+  }
+
+  return topGenre;
+}
+
+// Submit button
+submitBtn.addEventListener("click", () => {
+  const topGenre = calculateGenreResult();
+  resultText.textContent = `Your ideal game genre is: ${topGenre} 🎮`;
+  showSection(result);
+});
