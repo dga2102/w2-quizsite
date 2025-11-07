@@ -29,9 +29,19 @@ const questions = [
       { id: "c", text: "Team missions with friends", genre: "Co-op Campaign" },
     ]
   },
-  // Optional: image-based question example
   {
     id: 4,
+    text: "Choose Your Preferred Mode:",
+    type: "radio",
+    options: [
+      { id: "a", text: "PvPvE", genre: "Survival" },
+      { id: "b", text: "PvE", genre: "Single Player Story Mode" },
+      { id: "c", text: "PvP", genre: "Co-op Campaign" },
+    ]
+  },
+  //
+  {
+    id: 5,
     text: "Select the photo of the game you think looks like the most fun:",
     type: "image",
     options: [

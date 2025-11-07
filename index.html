@@ -13,22 +13,18 @@
 </head>
 <body class="relative min-h-screen bg-gray-900 flex items-center justify-center">
 
-  <!-- Full-page background image -->
   <div class="absolute inset-0 bg-[url('/images/background.jpg')] bg-cover bg-center opacity-30 z-0"></div>
 
-  <!-- Main quiz container with frosted glass effect -->
   <main class="relative z-10 w-full max-w-lg bg-white/30 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 p-8 text-center space-y-6">
     
-    <!-- Intro Section -->
     <section id="intro">
       <h1 class="text-3xl font-bold mb-4 text-white">Welcome to the Quiz!</h1>
-      <p class="text-gray-100 mb-6">Find out which genre of game suits you best!</p>
+      <p class="text-gray-100 mb-6">Find out which genre of video game suits you best!</p>
       <button id="startBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg transition">
         Start Quiz
       </button>
     </section>
 
-    <!-- Quiz Section -->
     <section id="quiz" class="hidden space-y-6 text-white">
       <div id="questionContainer" class="text-left"></div>
       <div class="flex justify-between">
@@ -38,7 +34,6 @@
       </div>
     </section>
 
-    <!-- Results Section -->
     <section id="result" class="hidden text-white">
       <h2 class="text-2xl font-bold mb-4">Your Results</h2>
       <p id="scoreText" class="text-lg mb-6">
